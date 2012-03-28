@@ -4,8 +4,8 @@
 // to start chrome (must not be running before) with disabled cross-domain-restrictions
 // then open debug.html to be able to start the app in a 400x800 window.
 
-// betterDate will be our global object wrapper
-var betterDate = {};
+// project will be our global object wrapper
+var project = {};
 var appShortName = "masterApp"; 
 var appVersion = "0.2";
 
