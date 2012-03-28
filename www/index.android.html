@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <script type="text/javascript" charset="utf-8" src="phonegap.js.android"></script>
+
+    <script src="js/json2.js"></script>
+
+	<link href='http://fonts.googleapis.com/css?family=Henny+Penny' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="jqmobile/themes/base.min.css"/>
+    <link rel="stylesheet" href="jqmobile/jquery.mobile.structure-1.0.min.css"/>
+    <link rel="stylesheet" href="css/basic.css"/>
+    <link rel="stylesheet" href="css/app.css"/>
+
+    <script src="js/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript">
+		project = {};
+        $(document).bind("mobileinit", function() {
+            $.mobile.autoInitializePage = false;
+            $.mobile.defaultPageTransition = 'slide';
+            $.mobile.touchOverflowEnabled = false;
+            $.mobile.defaultDialogTransition = 'none';
+            $.mobile.loadingMessage = false;
+            $.event.special.swipe.horizontalDistanceThreshold = 60;
+        });
+    </script>
+    <script src="jqmobile/jquery.mobile-1.0.min.js"></script>
+	<script src="jqmobile/jquery.mobile.pull2refresh.js" type="text/javascript"></script>
+	<script src="jqmobile/jquery.jtwitter.js" type="text/javascript"></script>
+	<script src="js/countries.js" type="text/javascript" charset="utf-8"></script>
+	
+    <script type="text/javascript" charset="utf-8" src="js/js-addons.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/js-api.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/mobile.js"></script>
+
+
+    <script>
+       var debugInBrowser = false && /chrome/.test( navigator.userAgent.toLowerCase() );
+  	
+
+    </script>	
+    <script type="text/javascript" charset="utf-8" src="js/run.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/core.js"></script>
+	<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+	
+	
+</head>
+<body>
+
+<div id="page-startup" data-role="page" data-theme="b">
+    <div data-role="content">
+        <div id="page-startup-center">
+            <img src="jqmobile/images/ajax-loader.png" alt="" class="spinner">
+            <span class="msg">Daten werden geladen...</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

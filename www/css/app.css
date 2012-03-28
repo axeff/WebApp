@@ -1,0 +1,172 @@
+@media all {
+	
+	#page-dashboard-list .ui-btn-inner {
+		top: 0;
+		left: 0;
+	}
+
+	#page-dashboard-list .ui-li-has-thumb *{
+		width: 100%;
+		height: 100%;
+	}
+
+	#page-dashboard-list .ui-li-thumb {
+
+		left: 0;
+		top: 0;
+		border: 0 !important;
+		max-height: 100% !important;
+		max-width: 100% !important;
+
+	}
+	
+	#page-dashboard-list .ui-li-has-thumb .img.accelerometer img{
+
+		width: 75% !important;
+		height: 75% !important;
+		left: 12.5%;
+		top: 12.5%;
+	}
+	
+	#page-dashboard-list .ui-li-has-thumb .img.list img {
+		width: 65% !important;
+		height: 60% !important;
+		left: 12.5%;
+		top: 12.5%;
+	}
+
+
+/****************************/
+/***   Multitouch START   ***/
+/****************************/
+#page-multitouch .cube {
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	padding: 20px;
+	font-weight: bold;
+	color: #444;
+	position: absolute;
+	font-family: 'Henny Penny', cursive;
+	text-align: center;
+}
+#touchable {
+/*	min-width: 200px;
+	min-height: 200px;*/
+
+	position: absolute;
+	border: 1px solid #333;
+	z-index: 10;
+	
+}
+
+#target {
+	width: 200px;
+	height: 200px;
+	border: 1px dashed #666;
+	background: #CCC;
+	opacity: 0.5;
+	z-index:1;
+}
+
+
+/****************************/
+/***   Multitouch END  	  ***/
+/****************************/
+
+/****************************/
+/***   Accellerator START ***/
+/****************************/
+#page-accelerometer, #page-accelerometer-content {
+	background-color: black;
+	background-image: none;
+}
+
+#ball {
+	width: 50px;
+	height: 50px;
+	position:absolute;
+	top: 0px;
+	left: 0px;
+
+
+}
+
+/****************************/
+/***   Accellerator END	  ***/
+/****************************/
+
+/****************************/
+/***   List START		  ***/
+/****************************/
+
+
+.refreshBar {
+    margin: -15px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+	background: black;
+	padding: 0 20px;
+}
+.refreshBar img {
+	top: 20px;
+	left: 20px;
+	-webkit-animation-timing-function:linear;
+	-webkit-animation-fill-mode:forwards;
+	float: left;
+}
+
+
+@-webkit-keyframes flipThisUp {
+  from {-webkit-transform: rotate(0deg);}
+  to {-webkit-transform:rotate(-180deg);}
+}
+
+
+.refreshBar span {
+    padding: 12px;
+    text-align: center;
+    font-size: 18px;
+	vertical-align: 20px;
+	color: white;
+	font-weight: bold;
+	text-shadow: none;
+}
+
+.refreshBar.pull2refresh-pending span.pending {
+    display: block;
+}
+.refreshBar.pull2refresh-pending span.active {
+    display: none;
+}
+.refreshBar.pull2refresh-active span.pending {
+    display: none;
+}
+.refreshBar.pull2refresh-active span.active {
+    display: block;
+}
+
+#page-list .ui-li {
+	background-color: black;
+	color: #CCC;
+	background-image: none;
+	border: 0;
+	border-top: 1px solid #333;
+}
+
+#page-list .ui-li .ui-btn-inner a.ui-link-inherit, #page-list .ui-li-static.ui-li {
+	padding: 0.7em 15px 0.7em 15px;
+	text-shadow: none;
+	font-size: 1.7em;
+}
+
+#page-list-content {
+	background-color: black;
+}
+
+/****************************/
+/***   List END			  ***/
+/****************************/
+
+}
