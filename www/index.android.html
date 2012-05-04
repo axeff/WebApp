@@ -20,6 +20,7 @@
             $.mobile.autoInitializePage = false;
             $.mobile.defaultPageTransition = 'slide';
             $.mobile.touchOverflowEnabled = false;
+			$.support.touchOverflow = true;
             $.mobile.defaultDialogTransition = 'none';
             $.mobile.loadingMessage = false;
             $.event.special.swipe.horizontalDistanceThreshold = 60;
@@ -37,13 +38,11 @@
 
     <script>
        var debugInBrowser = false && /chrome/.test( navigator.userAgent.toLowerCase() );
-  	
 
     </script>	
     <script type="text/javascript" charset="utf-8" src="js/run.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/core.js"></script>
 	<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
-	
 	
 </head>
 <body>

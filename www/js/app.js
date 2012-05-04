@@ -67,7 +67,7 @@ project.app = {
        
     },
     'onBackButtonDown': function() {
-        history.back();
+        window.history.back();
     },
     'addLoadButton': function(target) {
  	

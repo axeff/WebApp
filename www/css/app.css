@@ -107,7 +107,6 @@
     width: 100%;
     z-index: 1;
 	background: black;
-	padding: 0 20px;
 }
 .refreshBar img {
 	top: 20px;
@@ -158,7 +157,7 @@
 #page-list .ui-li .ui-btn-inner a.ui-link-inherit, #page-list .ui-li-static.ui-li {
 	padding: 0.7em 15px 0.7em 15px;
 	text-shadow: none;
-	font-size: 1.7em;
+	font-size: 1em;
 }
 
 #page-list-content {

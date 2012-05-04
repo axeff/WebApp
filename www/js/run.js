@@ -79,6 +79,7 @@ project.mobile = new Mobile(
 				var p = "";
 				var mTarget = "";
 				var lastTouch = {'pageX':0,'pageY':0};
+				var startX, startY, startXTouch, startYTouch, startXNode, startYNode = 0;
 				
 				setTimeout(function(){
 					//matrixTarget=$("#target").css("-webkit-transform");
@@ -87,15 +88,37 @@ project.mobile = new Mobile(
 					//mTarget = p.exec(matrixTarget);
 				},100);
 				
-				var move = function ($node, x, y) {
+				var move = function ($node, xTouch, yTouch, isTouch) {
 					
-					var halfSize = $node.outerWidth()/2;
-					$node.css({
-						left: (x - halfSize) + "px",
-						top: (y - halfSize) + "px",
-						//"-webkit-transform": origTranslate+" "+origRotate+" "+origScale
-					});
+					if (!isTouch){
+						startXTouch = xTouch;
+						startYTouch = yTouch;
+						startXNode = $node.offset().left;
+						startYNode = $node.offset().top;
 
+					}else{
+					
+						var x = (xTouch - startXTouch);
+						var y = (yTouch - startYTouch);
+						
+						var left = startXNode + x;
+						var top = startYNode + y;
+						// var x = xTouch>=startXTouch ? xTouch : xTouch*(-1);
+						// var y = yTouch>=startYTouch ? yTouch : yTouch*(-1);
+						// var left = startXNode + (startXTouch + x) >= 0 ? startXNode + (startXTouch + x) : 0;
+						// var top = startYNode + (startYTouch + y) >= 0 ? startYNode + (startYTouch + y) : 0;
+						// left = $node.outerWidth() + left >= $(window).width() ? $(window).width() - $node.outerWidth() : left;
+						// top = $node.outerHeight() + top >= $(window).height() ? $(window).height() - $node.outerHeight() : top;
+						// startXTouch = left;
+						// startYTouch = top;
+
+						//console.log(top);
+						$node.css({
+							left: left + "px",
+							top: top + "px",
+							"-webkit-transform": origRotate+" "+origScale
+						});
+					}
 				}
 				
 				var scale = function ($node, x1, y1, x2, y2){
@@ -194,7 +217,7 @@ project.mobile = new Mobile(
 					//$("#touchable").html("<p>1 Finger :: MOVE</p><p>2 Finger :: SCALE</p><p>3 Finger :: ROTATE</p>");
 					//$("#target").html("<p>TARGET</p>");
 				
-					document.addEventListener('touchstart',function(event) {
+					$('#touchable')[0].addEventListener('touchstart',function(event) {
 
 						event.preventDefault();
 
@@ -204,7 +227,7 @@ project.mobile = new Mobile(
 						
 						switch (touches.length){
 							case (1):
-								move($("#touchable"), touches[0].pageX, touches[0].pageY);
+								move($("#touchable"), touches[0].pageX, touches[0].pageY, false);
 							break;
 							case (2):
 								scale($("#touchable"), touches[0].pageX, touches[0].pageY, touches[1].pageX, touches[1].pageY);
@@ -217,8 +240,8 @@ project.mobile = new Mobile(
 
 					}, false);
 				
-					document.addEventListener('touchmove',function(event) {
-
+					$('#touchable')[0].addEventListener('touchmove',function(event) {
+						
 						event.preventDefault();
 
 						//console.log(event.originalEvent.touches.length+" Fingers, Freddy!");
@@ -228,7 +251,7 @@ project.mobile = new Mobile(
 						
 						switch (touches.length){
 							case (1):
-								move($("#touchable"), touches[0].pageX, touches[0].pageY);
+								move($("#touchable"), touches[0].pageX, touches[0].pageY, true);
 							break;
 							case (2):
 								scale($("#touchable"), touches[0].pageX, touches[0].pageY, touches[1].pageX, touches[1].pageY);
@@ -241,7 +264,7 @@ project.mobile = new Mobile(
 
 					}, false);
 
-					$(document).touchend(function(event) {
+					$('#touchable')[0].addEventListener('touchend',function(event) {
 						if ($("#target").length > 0)
 							isAtTarget($("#touchable"));
 						event.preventDefault();
@@ -261,12 +284,11 @@ project.mobile = new Mobile(
 				
 
 				//DEBUG IN BROWSER
-				$("#touchable").click(function(event) {
-					//event.preventDefault();
-					console.log(event);
-					move($(this), event.pageX, event.pageY);
-				
-				});
+				// $("#touchable").click(function(event) {
+				// 	//event.preventDefault();
+				// 	move($(this), event.pageX, event.pageY);
+				// 
+				// });
 				
 
                 
@@ -305,7 +327,7 @@ project.mobile = new Mobile(
 				
 				
 				var delay = 1; //~60Hz (1000ms/16)
-				var vMultiplier = 1;
+				var vMultiplier = 0.5;
 				var bounceMultiplier = 0; //0-1
 				
 
@@ -393,7 +415,7 @@ project.mobile = new Mobile(
                             e.preventDefault();
                             //$(this).remove();
                             var $self = $(this);
-                            $self.html('<li><h3><img src="jqmobile/images/ajax-loader.png" alt="" class="ed_spinner inline_spinner">loading more entries...</h3></li>');
+                            $self.html('<li><img src="jqmobile/images/ajax-loader.png" alt="" class="ed_spinner inline_spinner" />loading more entries...</li>');
                             //eDarling.app.blockUI();
                             setTimeout(function() {
                                 if (project.app.addMore()){
@@ -602,12 +624,12 @@ var deviceReady = function() {
     // fix phonegaps strange back behaviour causing the site to close when history is emtpy:
     if (!debugInBrowser) {
         try {
-        		document.addEventListener("backbutton", project.app.onBackButtonDown, false);
-               //window.history.back = navigator.app.origHistoryBack;
+        	document.addEventListener("backbutton", project.app.onBackButtonDown, false);
+            window.history.back = navigator.app.origHistoryBack;
         } catch(e) {
             // fails on ios
         }
-    }
+    }		
 	
     $.mobile.initializePage();
 };
